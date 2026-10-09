@@ -1,0 +1,39 @@
+{
+    "name": "iranimij/module-base",
+    "description": "Tiny shared base module for Iranimij Magento 2 extensions: a config tab, an installed-modules page and two typed helpers. No license checks. No phone-home. No ads.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "keywords": ["magento2", "mage-os", "hyva", "iranimij"],
+    "homepage": "https://github.com/iranimij/module-base",
+    "support": {
+        "issues": "https://github.com/iranimij/module-base/issues",
+        "source": "https://github.com/iranimij/module-base",
+        "docs": "https://github.com/iranimij/module-base#readme"
+    },
+    "authors": [
+        {
+            "name": "Iman Aboheydary",
+            "homepage": "https://github.com/iranimij"
+        }
+    ],
+    "require": {
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
+        "magento/framework": "^103.0.7",
+        "magento/module-backend": "^102.0.7",
+        "magento/module-config": "^101.2.7"
+    },
+    "autoload": {
+        "files": ["registration.php"],
+        "psr-4": {
+            "Iranimij\\Base\\": ""
+        }
+    },
+    "extra": {
+        "iranimij": {
+            "changelog": "https://github.com/iranimij/module-base/blob/main/CHANGELOG.md"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
