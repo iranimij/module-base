@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Iman Aboheydary. All rights reserved.
+ * See LICENSE for license details (MIT).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iranimij_Base::iranimij" title="Iranimij" translate="title" module="Iranimij_Base"
+             sortOrder="90" parent="Magento_Backend::system" resource="Iranimij_Base::iranimij"/>
+        <add id="Iranimij_Base::modules" title="Installed Modules" translate="title" module="Iranimij_Base"
+             sortOrder="10" parent="Iranimij_Base::iranimij" action="iranimij_base/modules/index" resource="Iranimij_Base::modules"/>
+    </menu>
+</config>

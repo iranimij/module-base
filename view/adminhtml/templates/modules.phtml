@@ -1,0 +1,47 @@
+<?php
+/**
+ * Copyright © Iman Aboheydary. All rights reserved.
+ * See LICENSE for license details (MIT).
+ */
+
+declare(strict_types=1);
+
+/** @var \Iranimij\Base\Block\Adminhtml\Modules $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$modules = $block->getModules();
+?>
+<div class="admin__data-grid-wrap">
+    <p><?= $escaper->escapeHtml(__('Modules from the iranimij vendor installed in this shop. This page reads local files only; nothing is sent anywhere.')) ?></p>
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th class="data-grid-th"><?= $escaper->escapeHtml(__('Module')) ?></th>
+                <th class="data-grid-th"><?= $escaper->escapeHtml(__('Package')) ?></th>
+                <th class="data-grid-th"><?= $escaper->escapeHtml(__('Version')) ?></th>
+                <th class="data-grid-th"><?= $escaper->escapeHtml(__('Status')) ?></th>
+                <th class="data-grid-th"><?= $escaper->escapeHtml(__('Links')) ?></th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($modules as $module): ?>
+            <tr>
+                <td><?= $escaper->escapeHtml($module['module']) ?></td>
+                <td><?= $escaper->escapeHtml($module['package']) ?></td>
+                <td><?= $escaper->escapeHtml($module['version']) ?></td>
+                <td><?= $escaper->escapeHtml($module['enabled'] ? __('Enabled') : __('Disabled')) ?></td>
+                <td>
+                    <?php if ($module['docs'] !== ''): ?>
+                        <a href="<?= $escaper->escapeUrl($module['docs']) ?>" target="_blank" rel="noopener"><?= $escaper->escapeHtml(__('Documentation')) ?></a>
+                    <?php endif; ?>
+                    <?php if ($module['changelog'] !== ''): ?>
+                        <a href="<?= $escaper->escapeUrl($module['changelog']) ?>" target="_blank" rel="noopener"><?= $escaper->escapeHtml(__('Changelog')) ?></a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        <?php if ($modules === []): ?>
+            <tr><td colspan="5"><?= $escaper->escapeHtml(__('No Iranimij modules installed.')) ?></td></tr>
+        <?php endif; ?>
+        </tbody>
+    </table>
+</div>

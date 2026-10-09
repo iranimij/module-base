@@ -51,7 +51,7 @@ jobs:
         with:
           composer_name: ${{ env.COMPOSER_NAME }}
           phpstan_level: 6
-          magento_pre_install_script: .github/ci/phpstan-pre-install.sh
+          magento_pre_install_script: .github/ci/pre-install.sh
 
   unit:
     name: Unit ${{ matrix.magento }} / PHP ${{ matrix.php }}
@@ -65,16 +65,28 @@ jobs:
       - uses: actions/checkout@v6
       - if: matrix.php == '8.2'
         uses: extdn/github-actions-m2/magento-unit-tests/8.2@97152617ecb8e17169983ee2f6accc9ef4a1f60a
-        env:
-          MAGENTO_VERSION: ${{ matrix.magento }}
+        with:
+          module_name: ${{ env.MODULE_NAME }}
+          composer_name: ${{ env.COMPOSER_NAME }}
+          magento_version: ${{ matrix.magento }}
+          magento_pre_install_script: .github/ci/pre-install.sh
+          magento_pre_install_script: .github/ci/pre-install.sh
       - if: matrix.php == '8.3'
         uses: extdn/github-actions-m2/magento-unit-tests/8.3@97152617ecb8e17169983ee2f6accc9ef4a1f60a
-        env:
-          MAGENTO_VERSION: ${{ matrix.magento }}
+        with:
+          module_name: ${{ env.MODULE_NAME }}
+          composer_name: ${{ env.COMPOSER_NAME }}
+          magento_version: ${{ matrix.magento }}
+          magento_pre_install_script: .github/ci/pre-install.sh
+          magento_pre_install_script: .github/ci/pre-install.sh
       - if: matrix.php == '8.4'
         uses: extdn/github-actions-m2/magento-unit-tests/8.4@97152617ecb8e17169983ee2f6accc9ef4a1f60a
-        env:
-          MAGENTO_VERSION: ${{ matrix.magento }}
+        with:
+          module_name: ${{ env.MODULE_NAME }}
+          composer_name: ${{ env.COMPOSER_NAME }}
+          magento_version: ${{ matrix.magento }}
+          magento_pre_install_script: .github/ci/pre-install.sh
+          magento_pre_install_script: .github/ci/pre-install.sh
 
   integration:
     name: Integration ${{ matrix.magento }} / PHP ${{ matrix.php }}
@@ -114,18 +126,21 @@ jobs:
           module_name: ${{ env.MODULE_NAME }}
           composer_name: ${{ env.COMPOSER_NAME }}
           magento_version: ${{ matrix.magento }}
+          magento_pre_install_script: .github/ci/pre-install.sh
       - if: matrix.php == '8.3'
         uses: extdn/github-actions-m2/magento-integration-tests/8.3@97152617ecb8e17169983ee2f6accc9ef4a1f60a
         with:
           module_name: ${{ env.MODULE_NAME }}
           composer_name: ${{ env.COMPOSER_NAME }}
           magento_version: ${{ matrix.magento }}
+          magento_pre_install_script: .github/ci/pre-install.sh
       - if: matrix.php == '8.4'
         uses: extdn/github-actions-m2/magento-integration-tests/8.4@97152617ecb8e17169983ee2f6accc9ef4a1f60a
         with:
           module_name: ${{ env.MODULE_NAME }}
           composer_name: ${{ env.COMPOSER_NAME }}
           magento_version: ${{ matrix.magento }}
+          magento_pre_install_script: .github/ci/pre-install.sh
 
   ci-ok:
     name: ci-ok
