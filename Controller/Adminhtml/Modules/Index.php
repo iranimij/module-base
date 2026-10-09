@@ -37,9 +37,10 @@ class Index extends Action implements HttpGetActionInterface
      */
     public function execute(): ResultInterface
     {
+        /** @var \Magento\Backend\Model\View\Result\Page $page */
         $page = $this->pageFactory->create();
         $page->setActiveMenu('Iranimij_Base::modules');
-        $page->getConfig()->getTitle()->prepend(__('Installed Iranimij modules'));
+        $page->getConfig()->getTitle()->prepend((string) __('Installed Iranimij modules'));
 
         return $page;
     }
